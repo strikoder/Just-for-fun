@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  api:
+    build: ./api
+    image: strikoder/api  # Replace 'strikoder' with your Docker Hub username
+    container_name: api_c
+    ports:
+      - '4000:4000'
+    volumes:
+      - "K:/_Docker tutorial/docker-crash-course-lesson-5/api:/app"
+      - "/app/node_modules"
+  reactapp:
+    build: ./myblog
+    image: strikoder/reactapp  # Replace 'strikoder' with your Docker Hub username
+    container_name: myblog_c
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
